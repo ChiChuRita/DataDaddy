@@ -1,0 +1,12 @@
+{
+  "name": "exp_datadaddy",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "typescript": "^5.1.3"
+  }
+}
