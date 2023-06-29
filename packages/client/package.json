@@ -13,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-router": "^0.0.1-beta.83",
     "@trpc/client": "^10.32.0",
     "@trpc/react": "^9.27.4",
     "@trpc/server": "^10.32.0",
