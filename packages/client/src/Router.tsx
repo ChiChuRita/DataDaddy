@@ -1,10 +1,26 @@
-import { RootRoute, Router } from "@tanstack/router";
+import { RootRoute, Route, Router } from "@tanstack/router";
 
-import Home from "./pages/Home";
+import RootLayout from "./pages/RootLayout";
+import Index from "./pages/Index";
+import Construction from "./pages/Construction";
 
 const rootRoute = new RootRoute({
-  component: Home,
+  component: RootLayout,
 });
+
+const indexRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: "/",
+  component: Index,
+});
+
+const connectionRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: "/connect",
+  component: Construction,
+});
+
+rootRoute.addChildren([indexRoute, connectionRoute]);
 
 export const router = new Router({
   routeTree: rootRoute,
