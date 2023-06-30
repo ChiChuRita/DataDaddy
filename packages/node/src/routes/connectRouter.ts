@@ -43,6 +43,7 @@ export const connectRouter = router({
             password: input.password,
             database: input.database,
           },
+          useNullAsDefault: true,
         })
       );
     }),
