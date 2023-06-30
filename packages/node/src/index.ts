@@ -1,21 +1,13 @@
 import { createHTTPHandler } from "@trpc/server/adapters/standalone";
 import { createServer } from "http";
 
+import { handler } from "./handler";
 import { appRouter } from "./appRouter";
-import cors from "cors";
-
-const devHandler = createHTTPHandler({
-  middleware: cors(),
-  router: appRouter,
-  createContext: () => {
-    return {};
-  },
-});
 
 const server = createServer((req, res) => {
   if (req.url?.startsWith("/trpc")) {
     req.url = req.url.replace("/trpc", "");
-    return devHandler(req, res);
+    return handler(req, res);
   }
 
   res.writeHead(400);
