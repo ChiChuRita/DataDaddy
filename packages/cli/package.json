@@ -1,6 +1,6 @@
 {
   "name": "@datadaddy/cli",
-  "version": "0.0.0-alpha.1",
+  "version": "0.0.0-alpha.2",
   "main": "dist/main.js",
   "bin": "dist/main.js",
   "license": "MIT",
@@ -9,8 +9,8 @@
     "dev": "nodemon ./src/main.ts"
   },
   "dependencies": {
-    "@datadaddy/client": "^0.0.0-alpha.1",
-    "@datadaddy/node": "^0.0.0-alpha.1",
+    "@datadaddy/client": "^0.0.0-alpha.2",
+    "@datadaddy/node": "^0.0.0-alpha.2",
     "serve-handler": "^6.1.5"
   },
   "devDependencies": {
