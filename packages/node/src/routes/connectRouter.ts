@@ -1,4 +1,4 @@
-import { router, procedure, dbProcedure } from "../appRouter";
+import { router, procedure } from "../trpc";
 import { z } from "zod";
 
 import knex from "knex";

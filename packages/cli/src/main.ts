@@ -8,8 +8,8 @@ const server = http.createServer((request, response) => {
   const devPath = "../../node_modules/@datadaddy/client/dist";
   const prodcutionPath = "/node_modules/@datadaddy/client/dist";
 
-  if (request.url?.startsWith("/trpc")) {
-    request.url = request.url.replace("/trpc", "");
+  if (request.url?.startsWith("/trpc/")) {
+    request.url = request.url.replace("/trpc/", "/");
     return nodeHandler(request, response);
   }
 

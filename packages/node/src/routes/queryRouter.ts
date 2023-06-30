@@ -1,8 +1,8 @@
-import { router, dbProcedure } from "../appRouter";
+import { router, dbProcedure } from "../trpc";
 import { z } from "zod";
 
-export const connectRouter = router({
-  getTables: dbProcedure.query(async ({ ctx }) => {
+export const queryRouter = router({
+  tables: dbProcedure.query(async ({ ctx }) => {
     const tables = await ctx.databaseConnection.meta.tables();
     return tables;
   }),

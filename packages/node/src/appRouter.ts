@@ -1,31 +1,11 @@
-import { TRPCError, initTRPC } from "@trpc/server";
-import { Context } from "./handler";
+import { router } from "./trpc";
 
-import { connectRouter } from "./routes/connectRoute";
+import { connectRouter } from "./routes/connectRouter";
+import { queryRouter } from "./routes/queryRouter";
 
-const t = initTRPC.context<Context>().create();
-
-export const middleware = t.middleware;
-export const router = t.router;
-export const procedure = t.procedure;
-
-const isConnected = middleware(({ next, ctx }) => {
-  if (!ctx.databaseConnection.connected) {
-    throw new TRPCError({
-      code: "UNAUTHORIZED",
-      message: "Not connected to database",
-    });
-  }
-
-  return next({
-    ctx: { databaseConnection: ctx.databaseConnection },
-  });
-});
-
-export const dbProcedure = procedure.use(isConnected);
-
-export const appRouter = t.router({
+export const appRouter = router({
   connect: connectRouter,
+  query: queryRouter,
 });
 
 export type AppRouter = typeof appRouter;
