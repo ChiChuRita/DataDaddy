@@ -7,7 +7,6 @@ import { appRouter } from "./appRouter";
 const server = createServer((req, res) => {
   if (req.url?.startsWith("/trpc/")) {
     req.url = req.url.replace("/trpc/", "/");
-    console.log(req.url);
     return handler(req, res);
   }
 

@@ -17,4 +17,17 @@ export const queryRouter = router({
       const result = await ctx.databaseConnection.knex.raw(input.query);
       return result;
     }),
+
+  columns: dbProcedure
+    .input(
+      z.object({
+        tableName: z.string().optional(),
+      })
+    )
+    .query(async ({ input, ctx }) => {
+      const columns = await ctx.databaseConnection.meta.columns(
+        input.tableName
+      );
+      return columns;
+    }),
 });

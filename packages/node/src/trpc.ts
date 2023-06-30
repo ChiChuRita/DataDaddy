@@ -14,7 +14,6 @@ const isConnected = middleware(({ next, ctx }) => {
       message: "Not connected to database",
     });
   }
-
   return next({
     ctx: { databaseConnection: ctx.databaseConnection },
   });

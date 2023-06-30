@@ -4,7 +4,13 @@ import { z } from "zod";
 import knex from "knex";
 
 export const connectRouter = router({
-  connectSqlite: procedure
+  test: procedure.query(({ ctx }) => {
+    return ctx.databaseConnection.connected;
+  }),
+  disconnect: procedure.mutation(({ ctx }) => {
+    ctx.disconnectDatabase();
+  }),
+  sqlite: procedure
     .input(
       z.object({
         databasePath: z.string(),
@@ -23,7 +29,7 @@ export const connectRouter = router({
       );
     }),
 
-  connectMysql: procedure
+  mysql: procedure
     .input(
       z.object({
         host: z.string(),

@@ -9,8 +9,8 @@
     "dev": "nodemon ./src/main.ts"
   },
   "dependencies": {
-    "@datadaddy/client": "*",
-    "@datadaddy/node": "*",
+    "@datadaddy/client": "^0.0.0-alpha.1",
+    "@datadaddy/node": "^0.0.0-alpha.1",
     "serve-handler": "^6.1.5"
   },
   "devDependencies": {
