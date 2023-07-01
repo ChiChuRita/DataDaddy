@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import { ReactNode } from "react";
-import { act } from "react-dom/test-utils";
 
 interface Tab {
   title: string;
