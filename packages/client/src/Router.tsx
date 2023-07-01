@@ -1,8 +1,8 @@
 import { RootRoute, Route, Router } from "@tanstack/router";
 
 import RootLayout from "./pages/RootLayout";
-import Index from "./pages/Index";
 import Construction from "./pages/Construction";
+import TabView from "./tabview/TabView";
 
 const rootRoute = new RootRoute({
   component: RootLayout,
@@ -11,7 +11,7 @@ const rootRoute = new RootRoute({
 const indexRoute = new Route({
   getParentRoute: () => rootRoute,
   path: "/",
-  component: Index,
+  component: TabView,
 });
 
 const connectionRoute = new Route({
