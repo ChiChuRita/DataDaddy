@@ -3,12 +3,13 @@ import { useTabStore } from "../store/tabStore";
 import TabHeader from "./TabHeader";
 
 const TabView = () => {
-  const { tabs, activeTab } = useTabStore();
+  const { getActiveTab } = useTabStore();
+  const activeTab = getActiveTab();
   return (
-    <div>
+    <div className="flex flex-col">
       <TabHeader />
-      {activeTab == -1 && <div>Nothing to see here</div>}
-      {activeTab != -1 && tabs.at(activeTab)?.content}
+      {activeTab && activeTab.content}
+      {!activeTab && <div className="flex-1">Nothing here</div>}
     </div>
   );
 };

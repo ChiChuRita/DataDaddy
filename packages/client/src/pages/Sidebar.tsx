@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { useTabStore } from "../store/tabStore";
 import Index from "./Index";
 import Construction from "./Construction";
@@ -7,19 +6,16 @@ const Sidebar = () => {
   const { addTab } = useTabStore();
 
   const createIndexTab = () => {
-    addTab(Index(), "Index Tab");
+    addTab(<Index />, "Index Tab");
   };
 
   const createConnectionTab = () => {
-    addTab(Construction(), "Connection Tab");
+    addTab(<Construction />, "Connection Tab");
   };
 
   return (
     <div className="flex flex-col w-[300px] ">
-      <div className="flex flex-col">
-        <Link to="/">Connections</Link>
-      </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col items-start">
         <h1>Create</h1>
         <button onClick={createIndexTab}>Index</button>
         <button onClick={createConnectionTab}>Connection</button>

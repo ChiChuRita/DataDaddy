@@ -1,15 +1,15 @@
-import { Outlet } from "@tanstack/react-router";
+import TabView from "../tabview/TabView";
 import Sidebar from "./Sidebar";
 
-const RootLayout = () => {
+const Layout = () => {
   return (
     <div className="flex">
       <Sidebar />
       <main className="flex w-full">
-        <Outlet />
+        <TabView />
       </main>
     </div>
   );
 };
 
-export default RootLayout;
+export default Layout;

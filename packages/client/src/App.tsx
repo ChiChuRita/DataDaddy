@@ -3,10 +3,8 @@ import { useState } from "react";
 import { httpBatchLink } from "@trpc/client";
 import { trpc } from "./utils/trpc";
 
-import { RouterProvider } from "@tanstack/react-router";
-import { router } from "./Router";
-
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Layout from "./pages/Layout";
 
 const App = () => {
   const [queryClient] = useState(() => new QueryClient());
@@ -26,7 +24,7 @@ const App = () => {
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
+        <Layout />
       </QueryClientProvider>
     </trpc.Provider>
   );

@@ -11,11 +11,12 @@ interface TabStore {
   activeTab: number;
   tabs: Tab[];
   setActiveTab: (index: number) => void;
+  getActiveTab: () => Tab | null;
   addTab: (tab: ReactNode, title: string) => void;
   removeTab: (index: number) => void;
 }
 
-export const useTabStore = create<TabStore>((set) => ({
+export const useTabStore = create<TabStore>((set, get) => ({
   tabs: [],
   activeTab: -1,
   addTab: (tab: ReactNode, title: string) =>
@@ -33,10 +34,11 @@ export const useTabStore = create<TabStore>((set) => ({
 
   removeTab: (index: number) => {
     set((state) => {
-      const tabs = state.tabs.filter((tab) => tab.index !== index);
+      const newTabs = state.tabs.filter((tab) => tab.index !== index);
+      const newActiveTab = newTabs.length - 1;
       return {
-        tabs: tabs.map((tab, i) => ({ ...tab, index: i })),
-        activeTab: tabs.length - 1,
+        tabs: newTabs,
+        activeTab: newActiveTab,
       };
     });
   },
@@ -45,4 +47,10 @@ export const useTabStore = create<TabStore>((set) => ({
     set(() => ({
       activeTab: index,
     })),
+
+  getActiveTab: () => {
+    const { tabs, activeTab } = get();
+    if (activeTab === -1) return null;
+    return tabs[activeTab];
+  },
 }));
