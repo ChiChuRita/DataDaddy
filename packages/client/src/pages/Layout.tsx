@@ -1,4 +1,4 @@
-import TabView from "../tabview/TabView";
+import TabView from "../tabs/TabView";
 import Sidebar from "./Sidebar";
 
 const Layout = () => {

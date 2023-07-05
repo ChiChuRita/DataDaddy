@@ -1,5 +1,5 @@
 import { useTabStore } from "../store/tabStore";
-import Index from "./Index";
+import Index from "../tabs/QueryTab";
 import Construction from "./Construction";
 
 const Sidebar = () => {
