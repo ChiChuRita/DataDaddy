@@ -1,23 +1,23 @@
 import { useTabStore } from "../store/tabStore";
-import Index from "../tabs/QueryTab";
+import QueryTab from "../tabs/QueryTab";
 import Construction from "./Construction";
 
 const Sidebar = () => {
   const { addTab } = useTabStore();
 
-  const createIndexTab = () => {
-    addTab(<Index />, "Index Tab");
+  const createQueryTab = () => {
+    addTab(<QueryTab />, "Query");
   };
 
   const createConnectionTab = () => {
-    addTab(<Construction />, "Connection Tab");
+    addTab(<Construction />, "Connection");
   };
 
   return (
     <div className="flex flex-col w-[300px] ">
       <div className="flex flex-col items-start">
         <h1>Create</h1>
-        <button onClick={createIndexTab}>Index</button>
+        <button onClick={createQueryTab}>Query</button>
         <button onClick={createConnectionTab}>Connection</button>
       </div>
       <div>

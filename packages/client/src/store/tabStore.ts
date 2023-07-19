@@ -4,53 +4,54 @@ import { ReactNode } from "react";
 interface Tab {
   title: string;
   content: ReactNode;
-  index: number;
+  id: number;
 }
 
 interface TabStore {
   activeTab: number;
   tabs: Tab[];
-  setActiveTab: (index: number) => void;
+  setActiveTab: (id: number) => void;
   getActiveTab: () => Tab | null;
   addTab: (tab: ReactNode, title: string) => void;
   removeTab: (index: number) => void;
 }
 
+let idx = 1;
+const getNewIndex = () => {
+  return idx++;
+};
+
 export const useTabStore = create<TabStore>((set, get) => ({
+  activeTab: 0,
   tabs: [],
-  activeTab: -1,
-  addTab: (tab: ReactNode, title: string) =>
-    set((state) => ({
-      tabs: [
-        ...state.tabs,
-        {
-          title,
-          content: tab,
-          index: state.tabs.length,
-        },
-      ],
-      activeTab: state.tabs.length,
-    })),
-
-  removeTab: (index: number) => {
-    set((state) => {
-      const newTabs = state.tabs.filter((tab) => tab.index !== index);
-      const newActiveTab = newTabs.length - 1;
-      return {
-        tabs: newTabs,
-        activeTab: newActiveTab,
-      };
-    });
-  },
-
-  setActiveTab: (index: number) =>
-    set(() => ({
-      activeTab: index,
-    })),
-
+  setActiveTab: (id: number) => set(() => ({ activeTab: id })),
   getActiveTab: () => {
+    const { activeTab, tabs } = get();
+    return tabs.find((tab) => tab.id === activeTab) || null;
+  },
+  addTab: (content: ReactNode, title: string) => {
+    const newID = getNewIndex();
+    console.log(newID);
+    const { tabs } = get();
+    const newTab = {
+      title,
+      content,
+      id: newID,
+    };
+    set(() => ({ tabs: [...tabs, newTab], activeTab: newTab.id }));
+  },
+  removeTab: (index: number) => {
     const { tabs, activeTab } = get();
-    if (activeTab === -1) return null;
-    return tabs[activeTab];
+    let activeID = activeTab;
+
+    if (activeTab === index) {
+      const activeIndex = tabs.findIndex((tab) => tab.id === index) - 1;
+      activeID = tabs[activeIndex]?.id || 0;
+    }
+
+    set(() => ({
+      tabs: tabs.filter((tab) => tab.id !== index),
+      activeTab: activeID,
+    }));
   },
 }));

@@ -23,6 +23,7 @@ export const connectRouter = router({
           client: "sqlite3",
           connection: {
             filename: input.databasePath,
+            dateStrings: true,
           },
           useNullAsDefault: true,
         })
@@ -48,6 +49,33 @@ export const connectRouter = router({
             user: input.user,
             password: input.password,
             database: input.database,
+            dateStrings: true,
+          },
+          useNullAsDefault: true,
+        })
+      );
+    }),
+
+  postgres: procedure
+    .input(
+      z.object({
+        host: z.string(),
+        user: z.string(),
+        password: z.string(),
+        database: z.string(),
+      })
+    )
+    .mutation(({ input, ctx }) => {
+      ctx.connectDatabase(
+        "postgres",
+        knex({
+          client: "pg",
+          connection: {
+            host: input.host,
+            user: input.user,
+            password: input.password,
+            database: input.database,
+            dateStrings: true,
           },
           useNullAsDefault: true,
         })

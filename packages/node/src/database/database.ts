@@ -2,7 +2,7 @@ import { Knex } from "knex";
 import schemaInspector from "knex-schema-inspector";
 import { SchemaInspector } from "knex-schema-inspector/dist/types/schema-inspector";
 
-type DatabaseType = "mysql" | "sqlite" | "postges";
+type DatabaseType = "mysql" | "sqlite" | "postgres";
 
 export interface DatabaseConnectionConnected {
   type: DatabaseType;
@@ -39,8 +39,4 @@ export const disconnectDatabase = () => {
   databaseConnection = {
     connected: false,
   };
-};
-
-export const useDatabase = () => {
-  return databaseConnection;
 };
