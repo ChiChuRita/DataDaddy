@@ -15,6 +15,7 @@
   "dependencies": {
     "@codemirror/lang-sql": "^6.5.2",
     "@lezer/highlight": "^1.1.6",
+    "@tanstack/react-router": "^0.0.1-beta.83",
     "@trpc/client": "^10.32.0",
     "@trpc/server": "^10.32.0",
     "@uiw/codemirror-themes": "^4.21.7",

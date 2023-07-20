@@ -4,6 +4,10 @@
 
 @layer base {
     body {
-        @apply bg-slate-950 text-slate-50 p-4
+        @apply bg-slate-950 text-slate-50 p-4 h-screen
+    }
+
+    #root {
+        @apply h-full
     }
 }

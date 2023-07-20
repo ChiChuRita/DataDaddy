@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
-type DatabaseType = "postgres" | "mysql" | "sqlite";
+export type DatabaseType = "postgres" | "mysql" | "sqlite";
 
-interface ConnectionConnected {
+export interface ConnectionConnected {
   connected: true;
   databaseType: DatabaseType;
 }
@@ -20,7 +20,7 @@ interface ConnectionStore {
   disconnect: () => void;
 }
 
-export const ConnectionStore = create<ConnectionStore>((set) => ({
+export const useConnectionStore = create<ConnectionStore>((set) => ({
   connection: { connected: false, databaseType: null },
   connect: (database: DatabaseType) =>
     set(() => ({ connection: { connected: true, databaseType: database } })),

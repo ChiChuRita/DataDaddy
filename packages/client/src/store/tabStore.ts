@@ -31,7 +31,6 @@ export const useTabStore = create<TabStore>((set, get) => ({
   },
   addTab: (content: ReactNode, title: string) => {
     const newID = getNewIndex();
-    console.log(newID);
     const { tabs } = get();
     const newTab = {
       title,
