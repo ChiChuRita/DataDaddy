@@ -14,7 +14,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="flex flex-col w-[300px] ">
+    <div className="flex w-[300px] flex-col ">
       <div className="flex flex-col items-start">
         <h1>Create</h1>
         <button onClick={createQueryTab}>Query</button>

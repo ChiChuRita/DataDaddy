@@ -1,6 +1,6 @@
 import { useTabStore } from "../store/tabStore";
 
-import classNames from "classnames";
+import { clsx } from "clsx";
 
 interface TabHeadProps {
   title: string;
@@ -12,10 +12,10 @@ const TabHead: React.FC<TabHeadProps> = ({ title, index }) => {
 
   return (
     <div
-      className={classNames(
-        "flex gap-2 p-2 rounded-t-md",
-        state.activeTab === index ? "bg-slate-900" : "bg-slate-800"
-      )}
+      className={clsx("flex gap-2 rounded-t-md p-2", {
+        "bg-slate-900": state.activeTab === index,
+        "bg-slate-800": state.activeTab !== index,
+      })}
     >
       <button onClick={() => state.setActiveTab(index)}>{title}</button>
       <button onClick={() => state.removeTab(index)}>
@@ -25,7 +25,7 @@ const TabHead: React.FC<TabHeadProps> = ({ title, index }) => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6"
+          className="h-6 w-6"
         >
           <path
             strokeLinecap="round"

@@ -20,7 +20,7 @@ const App = () => {
               : "http://localhost:3333/trpc",
         }),
       ],
-    })
+    }),
   );
 
   return (

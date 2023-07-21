@@ -6,7 +6,7 @@ const TabView = () => {
   const { getActiveTab } = useTabStore();
   const activeTab = getActiveTab();
   return (
-    <div className="flex flex-col w-full h-full">
+    <div className="flex h-full flex-col">
       <TabHeader />
       {activeTab && activeTab.content}
       {!activeTab && <div className="flex-1">Nothing here</div>}

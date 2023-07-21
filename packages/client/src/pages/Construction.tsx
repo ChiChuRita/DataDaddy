@@ -1,8 +1,8 @@
 const Construction = () => {
   return (
-    <div className="bg-slate-900 p-2 rounded-b-md">
-      <div className="bg-slate-800 w-full h-full rounded-lg flex justify-center items-center p-2">
-        <h1 className="font-medium text-lg">
+    <div className="rounded-b-md bg-slate-900 p-2">
+      <div className="flex h-full w-full items-center justify-center rounded-lg bg-slate-800 p-2">
+        <h1 className="text-lg font-medium">
           Sorry, this part of the app is still under construction 🏗️
         </h1>
       </div>
